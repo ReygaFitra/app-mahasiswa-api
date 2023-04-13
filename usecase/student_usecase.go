@@ -26,10 +26,11 @@ func (u *studentUsecase) FindStudent(id int) any {
 }
 
 func (u *studentUsecase) Register(newStudent *model.Student) string {
-	
-	// if len(u.studentRepo.GetAll()) > 10 {
-	// 	return "Maksimal 10 data Mahasiswa!"
-	// }
+
+	var studentMaximum [] model.Student
+	if len(studentMaximum) > 10 {
+		return "Maksimal 10 data Mahasiswa!"
+	}
 
 		if len(newStudent.Name) < 3 {
 			return("nama minimal 3 Karakter dan maksimal 20 karakter")
