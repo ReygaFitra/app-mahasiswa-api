@@ -57,7 +57,7 @@ func (c *StudentController) Edit(ctx *gin.Context) {
 func (c *StudentController) Unreg(ctx *gin.Context) {
 	id, err := strconv.Atoi(ctx.Param("id"))
 	if err != nil {
-		ctx.JSON(http.StatusBadRequest, "Invalid user ID")
+		ctx.JSON(http.StatusBadRequest, "Invalid student ID")
 		return
 	}
 

@@ -4,6 +4,7 @@ import (
 	"app-mahasiswa-api/controller"
 	"app-mahasiswa-api/repository"
 	"app-mahasiswa-api/usecase"
+	"app-mahasiswa-api/utils"
 	"database/sql"
 	"fmt"
 	"log"
@@ -13,13 +14,13 @@ import (
 )
 
 func ConnectDB() {
-	dbHost := "localhost"
-	dbPort := "5432"
-	dbUser := "postgres"
-	dbPassword := "postgre123"
-	dbName := "app_mahasiswa"
-	sslMode := "disable"
-	serverPort := ":8080"
+	dbHost := utils.DotEnv("DB_HOST")
+	dbPort := utils.DotEnv("DB_PORT")
+	dbUser := utils.DotEnv("DB_USER")
+	dbPassword := utils.DotEnv("DB_PASSWORD")
+	dbName := utils.DotEnv("DB_NAME")
+	sslMode := utils.DotEnv("SSL_MODE")
+	serverPort := utils.DotEnv("SERVER_PORT")
 
 	dataSourceName := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=%s", dbHost, dbPort, dbUser, dbPassword, dbName, sslMode)
 	db, err := sql.Open("postgres", dataSourceName)
