@@ -9,6 +9,8 @@ import (
 	"fmt"
 	"log"
 
+	authController "github.com/ReygaFitra/auth-jwt/controller"
+
 	"github.com/gin-gonic/gin"
 	_ "github.com/lib/pq"
 )
@@ -30,18 +32,21 @@ func ConnectDB() {
 	}
 
 	defer db.Close()
-
-	router := gin.Default()
-
-	studentRouter := router.Group("/api/v1/students")
-
 	studentRepo := repository.NewStudentRepo(db)
 	studentUsecase := usecase.NewUserUsecase(studentRepo)
 	studentCtrl := controller.NewStudentController(studentUsecase)
 
+	router := gin.Default()
+	// login routes
+	router.POST("/auth/login", authController.Login)
+	// register routes
+	router.POST("/api/v1/students", studentCtrl.Register)
+
+	studentRouter := router.Group("/api/v1/students/profile")
+	studentRouter.Use(authController.AuthMiddleware())
+
 	studentRouter.GET("", studentCtrl.FindStudents)
 	studentRouter.GET("/:id", studentCtrl.FindStudent)
-	studentRouter.POST("", studentCtrl.Register)
 	studentRouter.PUT("", studentCtrl.Edit)
 	studentRouter.DELETE("/:id", studentCtrl.Unreg)
 
