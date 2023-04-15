@@ -22,7 +22,7 @@ type studentRepo struct {
 func (r *studentRepo) GetAll() any {
 	var students []model.Student
 
-	query := "SELECT id, name, age, major FROM student"
+	query := "SELECT id, name, age, major, student_user_name FROM student"
 	rows, err := r.db.Query(query)
 
 	if err != nil {
@@ -34,7 +34,7 @@ func (r *studentRepo) GetAll() any {
 	for rows.Next() {
 		var student model.Student
 
-		if err := rows.Scan(&student.Id, &student.Name, &student.Age, &student.Major); err != nil {
+		if err := rows.Scan(&student.Id, &student.Name, &student.Age, &student.Major, &student.StudentUserName); err != nil {
 			log.Println(err)
 		}
 
@@ -55,10 +55,10 @@ func (r *studentRepo) GetAll() any {
 func (r *studentRepo) GetById(id int) any {
 	var studentDB model.Student
 
-	query := "SELECT id, name, age, major FROM student WHERE id = $1"
+	query := "SELECT id, name, age, major, student_user_name FROM student WHERE id = $1"
 	row := r.db.QueryRow(query, id)
 
-	err := row.Scan(&studentDB.Id, &studentDB.Name, &studentDB.Age, &studentDB.Major)
+	err := row.Scan(&studentDB.Id, &studentDB.Name, &studentDB.Age, &studentDB.Major, &studentDB.StudentUserName)
 
 	if err != nil {
 		log.Println(err)
@@ -72,8 +72,8 @@ func (r *studentRepo) GetById(id int) any {
 }
 
 func (r *studentRepo) Create(newStudent *model.Student) string {
-	query := "INSERT INTO student (name, age, major) VALUES ($1, $2, $3)"
-	_, err := r.db.Exec(query, newStudent.Name, newStudent.Age, newStudent.Major)
+	query := "INSERT INTO student (name, age, major, student_user_name) VALUES ($1, $2, $3, $4)"
+	_, err := r.db.Exec(query, newStudent.Name, newStudent.Age, newStudent.Major, newStudent.StudentUserName)
 
 	if err != nil {
 		log.Println(err)
@@ -90,8 +90,8 @@ func (r *studentRepo) Update(student *model.Student) string {
 		return res.(string)
 	}
 
-	query := "UPDATE student SET name = $1, age = $2, major = $3 WHERE id = $4"
-	_, err := r.db.Exec(query, student.Name, student.Age, student.Major, student.Id)
+	query := "UPDATE student SET name = $1, age = $2, major = $3, student_user_name = $4 WHERE id = $5"
+	_, err := r.db.Exec(query, student.Name, student.Age, student.Major, student.StudentUserName, student.Id)
 
 	if err != nil {
 		log.Println(err)
