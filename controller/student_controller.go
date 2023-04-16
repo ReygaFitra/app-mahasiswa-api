@@ -1,12 +1,12 @@
 package controller
 
 import (
-	"app-mahasiswa-api/model"
-	"app-mahasiswa-api/usecase"
 	"net/http"
 	"strconv"
 	"time"
 
+	"github.com/ReygaFitra/app-mahasiswa-api/model"
+	"github.com/ReygaFitra/app-mahasiswa-api/usecase"
 	authModel "github.com/ReygaFitra/auth-jwt/model"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"

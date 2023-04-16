@@ -1,9 +1,9 @@
-module app-mahasiswa-api
+module github.com/ReygaFitra/app-mahasiswa-api
 
 go 1.20
 
 require (
-	github.com/ReygaFitra/auth-jwt v0.0.0-20230416003931-af485a44a0e8 // indirect
+	github.com/ReygaFitra/auth-jwt v1.0.0 // indirect
 	github.com/bytedance/sonic v1.8.0 // indirect
 	github.com/chenzhuoyu/base64x v0.0.0-20221115062448-fe3a3abad311 // indirect
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible // indirect
