@@ -1,10 +1,11 @@
 package repository
 
 import (
-	"app-mahasiswa-api/model"
 	"database/sql"
 	"fmt"
 	"log"
+
+	"github.com/ReygaFitra/app-mahasiswa-api/model"
 )
 
 type StudentRepo interface {

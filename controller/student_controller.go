@@ -1,11 +1,11 @@
 package controller
 
 import (
-	"app-mahasiswa-api/model"
-	"app-mahasiswa-api/usecase"
 	"net/http"
 	"strconv"
 
+	"github.com/ReygaFitra/app-mahasiswa-api/model"
+	"github.com/ReygaFitra/app-mahasiswa-api/usecase"
 	"github.com/gin-gonic/gin"
 )
 

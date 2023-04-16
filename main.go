@@ -1,8 +1,7 @@
 package main
 
 import (
-	"app-mahasiswa-api/database"
-
+	"github.com/ReygaFitra/app-mahasiswa-api/database"
 	_ "github.com/lib/pq"
 )
 

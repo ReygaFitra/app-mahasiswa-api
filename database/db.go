@@ -1,14 +1,14 @@
 package database
 
 import (
-	"app-mahasiswa-api/controller"
-	"app-mahasiswa-api/repository"
-	"app-mahasiswa-api/usecase"
-	"app-mahasiswa-api/utils"
 	"database/sql"
 	"fmt"
 	"log"
 
+	"github.com/ReygaFitra/app-mahasiswa-api/controller"
+	"github.com/ReygaFitra/app-mahasiswa-api/repository"
+	"github.com/ReygaFitra/app-mahasiswa-api/usecase"
+	"github.com/ReygaFitra/app-mahasiswa-api/utils"
 	"github.com/gin-gonic/gin"
 	_ "github.com/lib/pq"
 )

@@ -1,4 +1,4 @@
-module app-mahasiswa-api
+module github.com/ReygaFitra/app-mahasiswa-api
 
 go 1.20
 
